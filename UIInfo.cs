@@ -2,6 +2,7 @@
 
 namespace Lab3
 {
+    /*
 	public enum UIClass
 	{
 		FirstClass,
@@ -13,14 +14,13 @@ namespace Lab3
 		OneWay,
 		Return
 	}
-
+    */
 	public enum UIDiscount
 	{
 		NoDiscount,
 		TwentyDiscount,
 		FortyDiscount
 	}
-
 	public enum UIPayment
 	{
 		DebitCard,
