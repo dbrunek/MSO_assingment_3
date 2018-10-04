@@ -6,15 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
-    abstract class Ticket
+    class NormalTicket : Ticket
     {
-        string From;
-        string To;
-        bool International;
-        bool TrainClass;
-        bool Date;
-
-        public Ticket()
+        public NormalTicket()
         {
 
         }

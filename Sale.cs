@@ -8,5 +8,6 @@ namespace Lab3
 {
     class Sale
     {
+        //price
     }
 }

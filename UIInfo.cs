@@ -2,19 +2,17 @@
 
 namespace Lab3
 {
-    /*
 	public enum UIClass
 	{
 		FirstClass,
 		SecondClass
 	}
-
+     
 	public enum UIWay
 	{
 		OneWay,
 		Return
 	}
-    */
 	public enum UIDiscount
 	{
 		NoDiscount,
