@@ -15,10 +15,10 @@ namespace Lab3
 			MessageBox.Show ("Hejdå!");
 		}
 
-		public void betala(int pris)
-		{
-			MessageBox.Show (pris + " cent");
-		}
-	}
+        public void betala(float pris)
+        {
+            MessageBox.Show("€ " + pris);
+        }
+    }
 }
 

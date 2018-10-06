@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
-    class NormalTicket : Ticket
+    public class NormalTicket : Ticket
     {
-        public NormalTicket()
+        public bool Day;
+        public bool Single = false;
+        public bool International = false;
+        public NormalTicket(string from, string to, int classes, float price, bool today, bool single, bool international) : base(from, to, classes, price)
         {
-
+            Day = today;
+            Single = single;
+            International = international;
         }
     }
 }

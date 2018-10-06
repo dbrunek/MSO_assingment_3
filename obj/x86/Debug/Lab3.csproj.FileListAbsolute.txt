@@ -15,3 +15,6 @@ C:\Users\gotvet\Source\Repos\MSO_assingment_3\obj\x86\Debug\Lab3.pdb
 C:\Users\Victor\Source\Repos\MSO_assingment_3\bin\Debug\Lab3.exe.config
 C:\Users\Victor\Source\Repos\MSO_assingment_3\obj\x86\Debug\Lab3.exe
 C:\Users\Victor\Source\Repos\MSO_assingment_3\obj\x86\Debug\Lab3.pdb
+C:\Users\Victor\Source\Repos\MSO_assingment_3\bin\Debug\Lab3.exe
+C:\Users\Victor\Source\Repos\MSO_assingment_3\bin\Debug\Lab3.pdb
+C:\Users\Victor\Source\Repos\MSO_assingment_3\obj\x86\Debug\Lab3.csprojResolveAssemblyReference.cache

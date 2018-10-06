@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace Lab3
 {
-    abstract class Ticket
+    public abstract class Ticket
     {
-        string From;
-        string To;
-        bool International;
-        bool TrainClass;
-        bool Date;
-
-        public Ticket()
+        public string From;
+        public string To;
+        public int Class;
+        public float Price;
+        public Ticket(string from, string to, int classes, float price)
         {
-
+            From = from;
+            To = to;
+            Class = classes;
+            Price = price;
         }
     }
 }
