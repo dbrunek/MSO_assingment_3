@@ -35,7 +35,7 @@ namespace Lab3
                 Discount = 0.25f;
             }
             else Discount = 0f;
-            MessageBox.Show("Card Number" + pasnr + "\nDiscount " + Discount * 100 + "%"); // kan dit?
+            MessageBox.Show("Card Number " + pasnr + "\nDiscount " + Discount * 100 + "%"); // kan dit?
             return Discount;
         }
     }

@@ -26,8 +26,8 @@ namespace Lab3
 
             Text = "Select Payment Method";
             // this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            Width = 700;
-            Height = 310;
+            Width = 500;
+            Height = 210;
             // Set layout
             var grid = new TableLayoutPanel();
             grid.Dock = DockStyle.Fill;
@@ -46,7 +46,7 @@ namespace Lab3
                 grid.ColumnStyles.Add(c);
             }
 
-            
+
             // Pay button
             DCCard = new Button();
             DCCard.Text = "Scan Discount Card";
@@ -81,14 +81,14 @@ namespace Lab3
 
         void SCanCard()
         {
-            if (!discount) 
+            if (!discount)
             {
                 ds = new DCScanner();
                 DiscountPersentage = ds.RetrieveCardData(ds.Scancard());
                 Price = Price * (1 - DiscountPersentage);
-                
+
                 discount = true;
-            } 
+            }
         }
         void Pay()
         {
@@ -98,23 +98,32 @@ namespace Lab3
                 case 0:
                     CreditCard c = new CreditCard();
                     c.Connect();
-                    int ccid = c.BeginTransaction(Price);
-                    c.EndTransaction(ccid);
+                    int ccid = c.BeginTransaction(Price+ 0.5f);
+                    PaymentSuccesful = c.EndTransaction(ccid);
                     break;
                 case 1:
                     DebitCard d = new DebitCard();
                     d.Connect();
                     int dcid = d.BeginTransaction(Price);
-                    d.EndTransaction(dcid);
+                    PaymentSuccesful = d.EndTransaction(dcid);
                     break;
                 case 2:
                     IKEAMyntAtare2000 coin = new IKEAMyntAtare2000();
                     coin.starta();
                     coin.betala(Price);
-                    coin.stoppa();
+                    //coin.stoppa();
                     break;
             }
-            Close();
+            PaymentSucces(PaymentSuccesful);
+        }
+
+        void PaymentSucces(bool succes)
+        {
+            if (succes)
+            {
+                UI.paid = true;
+                Close();
+            }
         }
     }
 }

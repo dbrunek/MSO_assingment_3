@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Lab3
 {
-    abstract class Printer
+    class Printer
     {
         int numberofTickets;
         Ticket Ticket;
@@ -17,11 +12,11 @@ namespace Lab3
             Ticket = ticket;
         }
 
-        public virtual void Print(int nticket, Ticket tickets)
+        public virtual void Print()
         {
-            for (int i = 0; i < nticket; i++)
+            for (int i = 0; i < numberofTickets; i++)
             {
-                MessageBox.Show("Printing ticket " + i + " of " + nticket + " ticket(s)");
+                MessageBox.Show("Printing ticket " + (i + 1) + " of " + numberofTickets + " ticket(s)");
             }
         }
     }

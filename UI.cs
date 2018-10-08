@@ -19,11 +19,13 @@ namespace Lab3
         RadioButton Local;
         RadioButton Today;
         RadioButton Otherday;
-        ComboBox payment;
         Button pay;
         //NormalTicket nticket;
         public float price;
+        public static bool paid = false;
+        int amount = 1;
         Sale sale;
+        Printer printer;
 
 
         public UI()
@@ -45,6 +47,12 @@ namespace Lab3
             
             sale = new Sale(price);
             sale.ShowDialog();
+            if (paid)
+            {
+                printer = new Printer(amount, ticket);
+                printer.Print();
+            }
+            paid = false;
         }
 
         void CalculatePrice(NormalTicket ticket)
@@ -67,12 +75,7 @@ namespace Lab3
             {
                 p = p * 2f;
             }
-
-            if (Ticket2.Checked)
-                p *= 2f;
-
-            if (Ticket3.Checked)
-                p *= 3f;
+            p *= amount;
 
             if (tariefeenheden == 0)
                 p = 0f;
@@ -238,21 +241,6 @@ namespace Lab3
             Otherday.Text = "Other Day";
             DayGrid.Controls.Add(Otherday);
 
-
-            // Payment option
-            Label paymentLabel = new Label();
-            paymentLabel.Text = "Payment by:";
-            paymentLabel.Dock = DockStyle.Fill;
-            paymentLabel.TextAlign = ContentAlignment.MiddleRight;
-            grid.Controls.Add(paymentLabel, 0, 2);
-            payment = new ComboBox();
-            payment.DropDownStyle = ComboBoxStyle.DropDownList;
-            payment.Items.AddRange(new string[] { "Credit card", "Debit card", "Cash" });
-            payment.SelectedIndex = 0;
-            payment.Dock = DockStyle.Fill;
-            grid.Controls.Add(payment, 1, 2);
-            grid.SetColumnSpan(payment, 6);
-
             // Pay button
             pay = new Button();
             pay.Text = "Pay";
@@ -284,6 +272,12 @@ namespace Lab3
             
             if (oneWay.Checked)
                 single = true;
+
+            if (Ticket2.Checked)
+                amount = 2;
+
+            if (Ticket3.Checked)
+                amount = 3;
 
             return new NormalTicket((string)fromBox.SelectedItem, (string)toBox.SelectedItem, klasse, day, single, international);
         }
