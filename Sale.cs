@@ -9,8 +9,9 @@ namespace Lab3
         Button pay;
         float Price;
         public float DiscountPersentage;
-        bool discount;
+        bool discount = false;
         public bool PaymentSuccesful = false;
+        DCScanner ds;
 
         public Sale(float price)
         {
@@ -40,6 +41,15 @@ namespace Lab3
             pay.Dock = DockStyle.Fill;
             grid.Controls.Add(pay, 0, 3);
             grid.SetColumnSpan(pay, 6);
+        }
+
+        void Payment()
+        {
+            if (!discount)// button.disountselected = true) 
+            { 
+                DiscountPersentage = ds.RetrieveCardData(ds.Scancard());
+                Price = Price * (1 - DiscountPersentage);
+            } 
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Lab3
         public virtual int Scancard()
         {
             // random discount generator
-            pasnr = r.Next(1, 10);
+            pasnr = r.Next(0, 10);
             return pasnr;           
         }
 

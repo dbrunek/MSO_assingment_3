@@ -15,6 +15,10 @@ namespace Lab3
         RadioButton noDiscount;
         RadioButton twentyDiscount;
         RadioButton fortyDiscount;
+        RadioButton International;
+        RadioButton Local;
+        RadioButton Today;
+        RadioButton Otherday;
         ComboBox payment;
         Button pay;
         //NormalTicket nticket;
@@ -112,22 +116,24 @@ namespace Lab3
             // Set label
             Text = "MSO Lab Exercise III";
             // this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            Width = 500;
-            Height = 210;
+            Width = 700;
+            Height = 310;
             // Set layout
             var grid = new TableLayoutPanel();
             grid.Dock = DockStyle.Fill;
             grid.Padding = new Padding(5);
             Controls.Add(grid);
-            grid.RowCount = 4;
+            grid.RowCount = 8;
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
             grid.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
-            grid.ColumnCount = 6;
-            for (int i = 0; i < 6; i++)
+            grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
+            grid.ColumnCount = 8;
+            for (int i = 0; i < 8; i++)
             {
-                ColumnStyle c = new ColumnStyle(SizeType.Percent, 16.66666f);
+                 ColumnStyle c = new ColumnStyle(SizeType.Percent, 12.0f);
+                //ColumnStyle c = new ColumnStyle(SizeType.AutoSize);
                 grid.ColumnStyles.Add(c);
             }
 
@@ -183,7 +189,7 @@ namespace Lab3
             GroupBox discountGroup = new GroupBox();
             discountGroup.Text = "# of tickets";
             discountGroup.Dock = DockStyle.Fill;
-            grid.Controls.Add(discountGroup, 4, 1);
+            grid.Controls.Add(discountGroup, 3, 1);
             grid.SetColumnSpan(discountGroup, 2);
             var discountGrid = new TableLayoutPanel();
             discountGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333f));
@@ -192,6 +198,28 @@ namespace Lab3
             discountGrid.Dock = DockStyle.Fill;
             discountGroup.Controls.Add(discountGrid);
 
+            //new
+            GroupBox IntGroup = new GroupBox();
+            IntGroup.Text = "International";
+            IntGroup.Dock = DockStyle.Fill;
+            grid.Controls.Add(IntGroup, 4, 1);
+            grid.SetColumnSpan(IntGroup, 1);
+            var IntGrid = new TableLayoutPanel();
+            IntGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 50.0f));
+            IntGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 50.0f));
+            IntGrid.Dock = DockStyle.Fill;
+            IntGroup.Controls.Add(IntGrid);
+
+            GroupBox DayGroup = new GroupBox();
+            DayGroup.Text = "Choose Day";
+            DayGroup.Dock = DockStyle.Fill;
+            grid.Controls.Add(DayGroup, 5, 1);
+            grid.SetColumnSpan(DayGroup, 1);
+            var DayGrid = new TableLayoutPanel();
+            DayGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 50.0f));
+            DayGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 50.0f));
+            DayGrid.Dock = DockStyle.Fill;
+            DayGroup.Controls.Add(DayGrid);
 
             // Create radio buttons
             firstClass = new RadioButton();
@@ -223,6 +251,25 @@ namespace Lab3
             discountGrid.Controls.Add(fortyDiscount);
 
 
+            //new
+            International = new RadioButton();
+            International.Text = "International";
+            International.Checked = true;
+            IntGrid.Controls.Add(International);
+            Local = new RadioButton();
+            Local.Text = "Local";
+            IntGrid.Controls.Add(Local);
+
+            //new
+            Today = new RadioButton();
+            Today.Text = "Today";
+            Today.Checked = true;
+            DayGrid.Controls.Add(Today);
+            Otherday = new RadioButton();
+            Otherday.Text = "Other Day";
+            DayGrid.Controls.Add(Otherday);
+
+
             // Payment option
             Label paymentLabel = new Label();
             paymentLabel.Text = "Payment by:";
@@ -235,15 +282,15 @@ namespace Lab3
             payment.SelectedIndex = 0;
             payment.Dock = DockStyle.Fill;
             grid.Controls.Add(payment, 1, 2);
-            grid.SetColumnSpan(payment, 5);
+            grid.SetColumnSpan(payment, 6);
 
             // Pay button
             pay = new Button();
             pay.Text = "Pay";
             pay.Dock = DockStyle.Fill;
             grid.Controls.Add(pay, 0, 3);
-            grid.SetColumnSpan(pay, 6);
-
+            grid.SetColumnSpan(pay, 7);
+            
 
             // Set up event
             pay.Click += (object sender, EventArgs e) => handlePayment(getUIInfo());
@@ -306,9 +353,10 @@ namespace Lab3
 
             if (klasse > 1)
                 day = true;
-            if (klasse > 2)
-                international = true;
 
+            if (International.Checked)
+                international = true;
+            
             if (oneWay.Checked)
                 single = true;
 
