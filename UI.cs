@@ -104,8 +104,8 @@ namespace Lab3
         }
         void CalculatePrice(NormalTicket ticket)
         {
-            int tariefeenheden = 8;
-            //gettriefeenheden
+            int tariefeenheden = Tariefeenheden.getTariefeenheden(ticket.From, ticket.To);
+
             float p = 0.16f * tariefeenheden + 0.82f;
 
             if(ticket.Class == 1)
