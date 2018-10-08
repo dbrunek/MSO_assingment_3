@@ -12,9 +12,9 @@ namespace Lab3
         RadioButton secondClass;
         RadioButton oneWay;
         RadioButton returnWay;
-        RadioButton noDiscount;
-        RadioButton twentyDiscount;
-        RadioButton fortyDiscount;
+        RadioButton Ticket1;
+        RadioButton Ticket2;
+        RadioButton Ticket3;
         RadioButton International;
         RadioButton Local;
         RadioButton Today;
@@ -31,7 +31,7 @@ namespace Lab3
             initializeControls();
         }
 
-        private void handlePayment(UIInfo info)
+        private void handlePayment(NormalTicket ticket)
         {
             // *************************************
             // This is the code you need to refactor
@@ -40,88 +40,42 @@ namespace Lab3
             // Get number of tariefeenheden
 
             //ticket = new NormalTicket();
-            int tariefeenheden = Tariefeenheden.getTariefeenheden(info.From, info.To);
 
-            // Compute the column in the table based on choices
-            int tableColumn;
-            // First based on class
-            switch (info.Class)
-            {
-                case UIClass.FirstClass:
-                    tableColumn = 3;
-                    break;
-                default:
-                    tableColumn = 0;
-                    break;
-            }
+            CalculatePrice(ticket);
             
-
-            // Get price
-            price = PricingTable.getPrice(tariefeenheden, tableColumn);
-            if (info.Way == UIWay.Return)
-            {
-                price *= 2;
-            }
-            // Add 50 cent if paying with credit card
-            if (info.Payment == UIPayment.CreditCard)
-            {
-                price += 0.50f;
-            }
-            switch (info.Discount)
-            {
-                case UIDiscount.TwentyDiscount:
-                    price *= 2;
-                    break;
-                case UIDiscount.FortyDiscount:
-                    price *= 3;
-                    break;
-            }
-
             sale = new Sale(price);
             sale.ShowDialog();
-            // Pay
-            switch (info.Payment)
-            {
-                case UIPayment.CreditCard:
-                    CreditCard c = new CreditCard();
-                    c.Connect();
-                    int ccid = c.BeginTransaction(price);
-                    c.EndTransaction(ccid);
-                    break;
-                case UIPayment.DebitCard:
-                    DebitCard d = new DebitCard();
-                    d.Connect();
-                    int dcid = d.BeginTransaction(price);
-                    d.EndTransaction(dcid);
-                    break;
-                case UIPayment.Cash:
-                    IKEAMyntAtare2000 coin = new IKEAMyntAtare2000();
-                    coin.starta();
-                    coin.betala(price);
-                    coin.stoppa();
-                    break;
-            }
         }
+
         void CalculatePrice(NormalTicket ticket)
         {
             int tariefeenheden = Tariefeenheden.getTariefeenheden(ticket.From, ticket.To);
-
-            float p = 0.16f * tariefeenheden + 0.82f;
+            float p;
+            p = 0.16f * tariefeenheden + 0.82f; // is uit appendix B/2
 
             if(ticket.Class == 1)
             {
                 p = p * 1.7f;
             }
 
-            if(!ticket.Single)
-            {
-                p = p * 2;
-            }
-
             if(ticket.International)
             {
-                p = p + 2;
+                p = p + 2f;
             }
+
+            if (!ticket.Single)
+            {
+                p = p * 2f;
+            }
+
+            if (Ticket2.Checked)
+                p *= 2f;
+
+            if (Ticket3.Checked)
+                p *= 3f;
+
+            if (tariefeenheden == 0)
+                p = 0f;
             price = p;
         }
 
@@ -254,16 +208,16 @@ namespace Lab3
 
 
             //discount
-            noDiscount = new RadioButton();
-            noDiscount.Text = "1";
-            noDiscount.Checked = true;
-            discountGrid.Controls.Add(noDiscount);
-            twentyDiscount = new RadioButton();
-            twentyDiscount.Text = "2";
-            discountGrid.Controls.Add(twentyDiscount);
-            fortyDiscount = new RadioButton();
-            fortyDiscount.Text = "3";
-            discountGrid.Controls.Add(fortyDiscount);
+            Ticket1 = new RadioButton();
+            Ticket1.Text = "1";
+            Ticket1.Checked = true;
+            discountGrid.Controls.Add(Ticket1);
+            Ticket2 = new RadioButton();
+            Ticket2.Text = "2";
+            discountGrid.Controls.Add(Ticket2);
+            Ticket3 = new RadioButton();
+            Ticket3.Text = "3";
+            discountGrid.Controls.Add(Ticket3);
 
 
             //new
@@ -308,48 +262,7 @@ namespace Lab3
             
 
             // Set up event
-            pay.Click += (object sender, EventArgs e) => handlePayment(getUIInfo());
-        }
-
-        private UIInfo getUIInfo()
-        {
-            UIClass cls;
-            if (firstClass.Checked)
-                cls = UIClass.FirstClass;
-            else
-                cls = UIClass.SecondClass;
-
-            UIWay way;
-            if (oneWay.Checked)
-                way = UIWay.OneWay;
-            else
-                way = UIWay.Return;
-
-            UIDiscount dis;
-            if (noDiscount.Checked)
-                dis = UIDiscount.NoDiscount;
-            else if (twentyDiscount.Checked)
-                dis = UIDiscount.TwentyDiscount;
-            else
-                dis = UIDiscount.FortyDiscount;
-
-            UIPayment pment;
-            switch ((string)payment.SelectedItem)
-            {
-                case "Credit card":
-                    pment = UIPayment.CreditCard;
-                    break;
-                case "Debit card":
-                    pment = UIPayment.DebitCard;
-                    break;
-                default:
-                    pment = UIPayment.Cash;
-                    break;
-            }
-
-            return new UIInfo((string)fromBox.SelectedItem,
-                (string)toBox.SelectedItem,
-                cls, way, dis, pment);
+            pay.Click += (object sender, EventArgs e) => handlePayment(MakeTicket());
         }
 
         private NormalTicket MakeTicket()
