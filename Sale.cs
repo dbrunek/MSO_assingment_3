@@ -24,7 +24,7 @@ namespace Lab3
         void Buttons()
         {
 
-            Text = "MSO Lab Exercise III";
+            Text = "Select Payment Method";
             // this.FormBorderStyle = FormBorderStyle.FixedSingle;
             Width = 700;
             Height = 310;
