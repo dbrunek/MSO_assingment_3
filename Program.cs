@@ -10,6 +10,8 @@ namespace Lab3
 		{
 			var ui = new UI ();
 			Application.Run (ui);
+         //   var sale = new Sale(1);
+         //   Application.Run(sale);
 		}
 	}
 }

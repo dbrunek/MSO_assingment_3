@@ -54,15 +54,7 @@ namespace Lab3
                     tableColumn = 0;
                     break;
             }
-            // Then, on the discount
-            /*switch (info.Discount) {
-			case UIDiscount.TwentyDiscount:
-				tableColumn += 1;
-				break;
-			case UIDiscount.FortyDiscount:
-				tableColumn += 2;
-				break;
-			}*/
+            
 
             // Get price
             price = PricingTable.getPrice(tariefeenheden, tableColumn);
@@ -86,6 +78,7 @@ namespace Lab3
             }
 
             sale = new Sale(price);
+            sale.ShowDialog();
             // Pay
             switch (info.Payment)
             {
@@ -123,7 +116,7 @@ namespace Lab3
             grid.Dock = DockStyle.Fill;
             grid.Padding = new Padding(5);
             Controls.Add(grid);
-            grid.RowCount = 8;
+            grid.RowCount = 5;
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
             grid.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
@@ -339,19 +332,16 @@ namespace Lab3
 
         private NormalTicket MakeTicket()
         {
-            int klasse = 0;
+            int klasse = 2;
             bool day = false;
             bool international = false;
             bool single = false;
+            
             //eerste / 2e klas
             if (firstClass.Checked)
                 klasse = 1;
-            else
-                klasse = 2;
 
-            //enkeltje o retourtje nog verder uitwerken want de radiobuttons missen
-
-            if (klasse > 1)
+            if (Today.Checked)
                 day = true;
 
             if (International.Checked)
@@ -360,7 +350,7 @@ namespace Lab3
             if (oneWay.Checked)
                 single = true;
 
-            return new NormalTicket((string)fromBox.SelectedItem, (string)toBox.SelectedItem, klasse, 0, day, single, international);
+            return new NormalTicket((string)fromBox.SelectedItem, (string)toBox.SelectedItem, klasse, day, single, international);
         }
         #endregion
     }

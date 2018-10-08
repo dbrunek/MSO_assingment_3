@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Lab3
 {
-    abstract class DCScanner
+    class DCScanner
     {
         Random r = new Random();
         public int pasnr;
