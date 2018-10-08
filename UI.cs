@@ -102,6 +102,28 @@ namespace Lab3
                     break;
             }
         }
+        void CalculatePrice(NormalTicket ticket)
+        {
+            int tariefeenheden = 8;
+            //gettriefeenheden
+            float p = 0.16f * tariefeenheden + 0.82f;
+
+            if(ticket.Class == 1)
+            {
+                p = p * 1.7f;
+            }
+
+            if(!ticket.Single)
+            {
+                p = p * 2;
+            }
+
+            if(ticket.International)
+            {
+                p = p + 2;
+            }
+            price = p;
+        }
 
         #region Set-up -- don't look at it
         private void initializeControls()
