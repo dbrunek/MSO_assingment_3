@@ -35,13 +35,6 @@ namespace Lab3
 
         private void handlePayment(NormalTicket ticket)
         {
-            // *************************************
-            // This is the code you need to refactor
-            // *************************************
-
-            // Get number of tariefeenheden
-
-            //ticket = new NormalTicket();
 
             CalculatePrice(ticket);
             
