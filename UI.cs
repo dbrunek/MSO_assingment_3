@@ -20,13 +20,11 @@ namespace Lab3
         RadioButton Today;
         RadioButton Otherday;
         Button pay;
-        //NormalTicket nticket;
         public static float price;
         public static bool paid = false;
         int amount = 1;
         Sale sale;
         Printer printer;
-
 
         public UI()
         {
@@ -35,7 +33,6 @@ namespace Lab3
 
         private void handlePayment(NormalTicket ticket)
         {
-
             CalculatePrice(ticket);
             
             sale = new Sale(price);
@@ -88,12 +85,11 @@ namespace Lab3
             grid.Dock = DockStyle.Fill;
             grid.Padding = new Padding(5);
             Controls.Add(grid);
-            grid.RowCount = 5;
+            grid.RowCount = 4;
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
             grid.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
-            grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
             grid.ColumnCount = 6;
             for (int i = 0; i < 6; i++)
             {
@@ -101,7 +97,6 @@ namespace Lab3
                 //ColumnStyle c = new ColumnStyle(SizeType.AutoSize);
                 grid.ColumnStyles.Add(c);
             }
-
 
             // Create From and To
             var fromLabel = new Label();
@@ -128,7 +123,6 @@ namespace Lab3
             grid.Controls.Add(toBox, 4, 0);
             grid.SetColumnSpan(toBox, 2);
             toBox.Dock = DockStyle.Fill;
-
 
             // Create groups
             GroupBox classGroup = new GroupBox();
@@ -248,7 +242,7 @@ namespace Lab3
             pay.Click += (object sender, EventArgs e) => handlePayment(MakeTicket());
         }
 
-        private NormalTicket MakeTicket()
+        NormalTicket MakeTicket()
         {
             int klasse = 2;
             bool day = false;
