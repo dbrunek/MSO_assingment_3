@@ -3,24 +3,35 @@ using System.Windows.Forms;
 
 namespace Lab3
 {
-    class DCScanner
+    abstract class DCScanner
     {
-        Random r = new Random();
         public int pasnr;
         public float Discount;
         public DCScanner()
         {
 
         }
+        public abstract int Scancard();
+        public abstract float RetrieveCardData(int pasnr);
 
-        public virtual int Scancard()
+    }
+
+    class DCScanner1 : DCScanner
+    {
+        Random r = new Random();
+        public DCScanner1()
+        {
+
+        }
+
+        public override int Scancard()
         {
             // random discount generator
             pasnr = r.Next(0, 10);
             return pasnr;           
         }
 
-        public virtual float RetrieveCardData(int pasnr)
+        public override float RetrieveCardData(int pasnr)
         {
             if (pasnr > 8)
             {

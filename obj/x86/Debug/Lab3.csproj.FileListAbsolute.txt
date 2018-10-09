@@ -27,3 +27,6 @@ C:\Users\6240577\Source\Repos\dbrunek\MSO_assingment_3\obj\x86\Debug\Lab3.pdb
 C:\Users\6240577\Source\Repos\dbrunek\MSO_assingment_3\bin\Debug\Lab3.exe
 C:\Users\6240577\Source\Repos\dbrunek\MSO_assingment_3\bin\Debug\Lab3.pdb
 C:\Users\6240577\Source\Repos\dbrunek\MSO_assingment_3\obj\x86\Debug\Lab3.csprojResolveAssemblyReference.cache
+Z:\MSO_assingment_3\bin\Debug\Lab3.exe
+Z:\MSO_assingment_3\bin\Debug\Lab3.pdb
+Z:\MSO_assingment_3\obj\x86\Debug\Lab3.csprojResolveAssemblyReference.cache

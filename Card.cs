@@ -27,7 +27,7 @@ namespace Lab3
 
 		public int BeginTransaction (float amount)
 		{
-			MessageBox.Show ("Begin transaction 1 of € " + amount);
+			MessageBox.Show ("Begin transaction 1 of € " + string.Format("{0:0.00}", amount));
 			return 1;
 		}
 
@@ -64,7 +64,7 @@ namespace Lab3
 
 		public int BeginTransaction (float amount)
 		{
-			MessageBox.Show ("Begin transaction 1 of € " + amount);
+			MessageBox.Show ("Begin transaction 1 of € " + string.Format("{0:0.00}", amount));
 			return 1;
 		}
 

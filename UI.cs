@@ -21,7 +21,7 @@ namespace Lab3
         RadioButton Otherday;
         Button pay;
         //NormalTicket nticket;
-        public float price;
+        public static float price;
         public static bool paid = false;
         int amount = 1;
         Sale sale;
@@ -49,7 +49,7 @@ namespace Lab3
             sale.ShowDialog();
             if (paid)
             {
-                printer = new Printer(amount, ticket);
+                printer = new Printer1(amount, ticket, price);
                 printer.Print();
             }
             paid = false;
@@ -259,6 +259,7 @@ namespace Lab3
             bool day = false;
             bool international = false;
             bool single = false;
+            amount = 1;
             
             //eerste / 2e klas
             if (firstClass.Checked)

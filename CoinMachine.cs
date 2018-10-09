@@ -17,7 +17,7 @@ namespace Lab3
 
         public void betala(float pris)
         {
-            MessageBox.Show("€ " + pris);
+            MessageBox.Show("€ " + string.Format("{0:0.00}", pris));
         }
     }
 }

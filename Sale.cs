@@ -23,7 +23,6 @@ namespace Lab3
 
         void Buttons()
         {
-
             Text = "Select Payment Method";
             // this.FormBorderStyle = FormBorderStyle.FixedSingle;
             Width = 500;
@@ -41,11 +40,9 @@ namespace Lab3
             grid.ColumnCount = 4;
             for (int i = 0; i < 4; i++)
             {
-                ColumnStyle c = new ColumnStyle(SizeType.Percent, 32.0f);
-                //ColumnStyle c = new ColumnStyle(SizeType.AutoSize);
+                ColumnStyle c = new ColumnStyle(SizeType.Percent, 36.0f);
                 grid.ColumnStyles.Add(c);
             }
-
 
             // Pay button
             DCCard = new Button();
@@ -83,7 +80,7 @@ namespace Lab3
         {
             if (!discount)
             {
-                ds = new DCScanner();
+                ds = new DCScanner1();
                 DiscountPersentage = ds.RetrieveCardData(ds.Scancard());
                 Price = Price * (1 - DiscountPersentage);
 
@@ -98,7 +95,8 @@ namespace Lab3
                 case 0:
                     CreditCard c = new CreditCard();
                     c.Connect();
-                    int ccid = c.BeginTransaction(Price+ 0.5f);
+                    Price += 0.5f;
+                    int ccid = c.BeginTransaction(Price);
                     PaymentSuccesful = c.EndTransaction(ccid);
                     break;
                 case 1:
@@ -111,17 +109,19 @@ namespace Lab3
                     IKEAMyntAtare2000 coin = new IKEAMyntAtare2000();
                     coin.starta();
                     coin.betala(Price);
+                    PaymentSuccesful = true;
                     //coin.stoppa();
                     break;
             }
-            PaymentSucces(PaymentSuccesful);
+            PaymentSucces(PaymentSuccesful, Price);
         }
 
-        void PaymentSucces(bool succes)
+        void PaymentSucces(bool succes, float price)
         {
             if (succes)
             {
                 UI.paid = true;
+                UI.price = price;
                 Close();
             }
         }
