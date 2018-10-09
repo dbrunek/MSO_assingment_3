@@ -248,7 +248,7 @@ namespace Lab3
             pay.Text = "Pay";
             pay.Dock = DockStyle.Fill;
             grid.Controls.Add(pay, 0, 3);
-            grid.SetColumnSpan(pay, 5);
+            grid.SetColumnSpan(pay, 6);
             
 
             // Set up event

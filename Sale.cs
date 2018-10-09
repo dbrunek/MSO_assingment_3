@@ -35,8 +35,8 @@ namespace Lab3
             grid.RowCount = 2;
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
-            grid.ColumnCount = 3;
-            for (int i = 0; i < 3; i++)
+            grid.ColumnCount = 2;
+            for (int i = 0; i < 2; i++)
             {
                 ColumnStyle c = new ColumnStyle(SizeType.Percent, 36.0f);
                 grid.ColumnStyles.Add(c);
@@ -69,7 +69,7 @@ namespace Lab3
             pay.Text = "Pay";
             pay.Dock = DockStyle.Fill;
             grid.Controls.Add(pay, 1, 2);
-            grid.SetColumnSpan(pay, 2);
+            grid.SetColumnSpan(pay, 1);
 
             pay.Click += (object sender, EventArgs e) => Pay();
         }
