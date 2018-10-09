@@ -30,15 +30,13 @@ namespace Lab3
             // Set layout
             var grid = new TableLayoutPanel();
             grid.Dock = DockStyle.Fill;
-            grid.Padding = new Padding(5);
+            grid.Padding = new Padding(4);
             Controls.Add(grid);
-            grid.RowCount = 4;
-            grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
-            grid.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
-            grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
+            grid.RowCount = 2;
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
-            grid.ColumnCount = 4;
-            for (int i = 0; i < 4; i++)
+            grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
+            grid.ColumnCount = 3;
+            for (int i = 0; i < 3; i++)
             {
                 ColumnStyle c = new ColumnStyle(SizeType.Percent, 36.0f);
                 grid.ColumnStyles.Add(c);
@@ -48,7 +46,7 @@ namespace Lab3
             DCCard = new Button();
             DCCard.Text = "Scan Discount Card";
             DCCard.Dock = DockStyle.Fill;
-            grid.Controls.Add(DCCard, 0, 1);
+            grid.Controls.Add(DCCard, 0, 2);
             grid.SetColumnSpan(DCCard, 1);
             DCCard.Click += (object sender, EventArgs e) => SCanCard();
 
@@ -63,15 +61,15 @@ namespace Lab3
             payment.Items.AddRange(new string[] { "Credit card", "Debit card", "Cash" });
             payment.SelectedIndex = 0;
             payment.Dock = DockStyle.Fill;
-            grid.Controls.Add(payment, 2, 1);
+            grid.Controls.Add(payment, 1, 1);
             grid.SetColumnSpan(payment, 1);
 
             // Pay button
             pay = new Button();
             pay.Text = "Pay";
             pay.Dock = DockStyle.Fill;
-            grid.Controls.Add(pay, 2, 1);
-            grid.SetColumnSpan(pay, 3);
+            grid.Controls.Add(pay, 1, 2);
+            grid.SetColumnSpan(pay, 2);
 
             pay.Click += (object sender, EventArgs e) => Pay();
         }

@@ -33,7 +33,7 @@ namespace Lab3
             for (int i = 0; i < numberofTickets; i++)
             {
                 MessageBox.Show("Printing: ticket " + (i + 1) + " of " + numberofTickets + " ticket(s)\nClass: "
-                    + Ticket.Class + "\nVan: " + Ticket.From + "\nNaar: " + Ticket.To + "\nSingle: " + Ticket.Single
+                    + Ticket.Class + "\nFrom: " + Ticket.From + "\nTo: " + Ticket.To + "\nSingle: " + Ticket.Single
                     + "\nToday: " + Ticket.Day + "\nInternational: " + Ticket.International + "\nPrice: € " + string.Format("{0:0.00}", Prijs));
             }
         }

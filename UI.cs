@@ -101,10 +101,10 @@ namespace Lab3
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
             grid.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
-            grid.ColumnCount = 8;
-            for (int i = 0; i < 8; i++)
+            grid.ColumnCount = 6;
+            for (int i = 0; i < 6; i++)
             {
-                 ColumnStyle c = new ColumnStyle(SizeType.Percent, 12.0f);
+                ColumnStyle c = new ColumnStyle(SizeType.Percent, 22.0f);
                 //ColumnStyle c = new ColumnStyle(SizeType.AutoSize);
                 grid.ColumnStyles.Add(c);
             }
@@ -142,7 +142,7 @@ namespace Lab3
             classGroup.Text = "Class";
             classGroup.Dock = DockStyle.Fill;
             grid.Controls.Add(classGroup, 0, 1);
-            grid.SetColumnSpan(classGroup, 2);
+            grid.SetColumnSpan(classGroup, 1);
             var classGrid = new TableLayoutPanel();
             classGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
             classGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
@@ -151,30 +151,19 @@ namespace Lab3
             GroupBox wayGroup = new GroupBox();
             wayGroup.Text = "Amount";
             wayGroup.Dock = DockStyle.Fill;
-            grid.Controls.Add(wayGroup, 2, 1);
-            grid.SetColumnSpan(wayGroup, 2);
+            grid.Controls.Add(wayGroup, 1, 1);
+            grid.SetColumnSpan(wayGroup, 1);
             var wayGrid = new TableLayoutPanel();
             wayGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
             wayGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
             wayGrid.Dock = DockStyle.Fill;
             wayGroup.Controls.Add(wayGrid);
-            GroupBox discountGroup = new GroupBox();
-            discountGroup.Text = "# of tickets";
-            discountGroup.Dock = DockStyle.Fill;
-            grid.Controls.Add(discountGroup, 3, 1);
-            grid.SetColumnSpan(discountGroup, 2);
-            var discountGrid = new TableLayoutPanel();
-            discountGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333f));
-            discountGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333f));
-            discountGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333f));
-            discountGrid.Dock = DockStyle.Fill;
-            discountGroup.Controls.Add(discountGrid);
 
             //new
             GroupBox IntGroup = new GroupBox();
             IntGroup.Text = "International";
             IntGroup.Dock = DockStyle.Fill;
-            grid.Controls.Add(IntGroup, 4, 1);
+            grid.Controls.Add(IntGroup, 2, 1);
             grid.SetColumnSpan(IntGroup, 1);
             var IntGrid = new TableLayoutPanel();
             IntGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 50.0f));
@@ -185,13 +174,26 @@ namespace Lab3
             GroupBox DayGroup = new GroupBox();
             DayGroup.Text = "Choose Day";
             DayGroup.Dock = DockStyle.Fill;
-            grid.Controls.Add(DayGroup, 5, 1);
+            grid.Controls.Add(DayGroup, 4, 1);
             grid.SetColumnSpan(DayGroup, 1);
             var DayGrid = new TableLayoutPanel();
             DayGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 50.0f));
             DayGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 50.0f));
             DayGrid.Dock = DockStyle.Fill;
             DayGroup.Controls.Add(DayGrid);
+            
+            //verplaatst
+            GroupBox discountGroup = new GroupBox();
+            discountGroup.Text = "# of tickets";
+            discountGroup.Dock = DockStyle.Fill;
+            grid.Controls.Add(discountGroup, 5, 1);
+            grid.SetColumnSpan(discountGroup, 1);
+            var discountGrid = new TableLayoutPanel();
+            discountGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333f));
+            discountGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333f));
+            discountGrid.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333f));
+            discountGrid.Dock = DockStyle.Fill;
+            discountGroup.Controls.Add(discountGrid);
 
             // Create radio buttons
             firstClass = new RadioButton();
@@ -246,7 +248,7 @@ namespace Lab3
             pay.Text = "Pay";
             pay.Dock = DockStyle.Fill;
             grid.Controls.Add(pay, 0, 3);
-            grid.SetColumnSpan(pay, 7);
+            grid.SetColumnSpan(pay, 5);
             
 
             // Set up event
