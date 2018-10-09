@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="DCScanner.cs" />
     <Compile Include="NormalTicket.cs" />
-    <Compile Include="PaymentMethod.cs" />
     <Compile Include="Printer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,8 +54,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tariefeenheden.cs" />
-    <Compile Include="UIInfo.cs" />
-    <Compile Include="PricingTable.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="CoinMachine.cs" />
   </ItemGroup>

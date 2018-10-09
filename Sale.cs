@@ -85,6 +85,7 @@ namespace Lab3
                 discount = true;
             }
         }
+
         void Pay()
         {
             Price = (float)Math.Round(Price, 2);
