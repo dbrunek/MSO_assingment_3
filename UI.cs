@@ -49,7 +49,7 @@ namespace Lab3
         {
             int tariefeenheden = Tariefeenheden.getTariefeenheden(ticket.From, ticket.To);
             float p;
-            p = 0.16f * tariefeenheden + 0.82f; // is uit appendix B/2
+            p = 0.16f * tariefeenheden + 0.82f; // is uit appendix B van Lab 2
 
             if(ticket.Class == 1)
             {
