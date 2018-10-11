@@ -7,13 +7,19 @@ namespace Lab3
 	{
 		public void starta()
 		{
-			MessageBox.Show ("Välkommen till IKEA Mynt Ätare 2000");
+			MessageBox.Show ("Welcome at the payment machine");
 		}
 
-		public void stoppa()
-		{
-			MessageBox.Show ("Hejdå!");
-		}
+		public bool stoppa(bool X)
+		{			
+            if (!X)
+            {
+                MessageBox.Show("Something went wrong \nYOU lost your money!! :-)");
+                return false;
+            }
+            MessageBox.Show("Payment Succesful");
+            return true;
+        }
 
         public void betala(float pris)
         {

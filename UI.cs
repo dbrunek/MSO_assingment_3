@@ -184,11 +184,11 @@ namespace Lab3
 
             // Create radio buttons
             firstClass = new RadioButton();
-            firstClass.Text = "1st class";
-            firstClass.Checked = true;
+            firstClass.Text = "1st class";          
             classGrid.Controls.Add(firstClass);
             secondClass = new RadioButton();
             secondClass.Text = "2nd class";
+            secondClass.Checked = true;
             classGrid.Controls.Add(secondClass);
             oneWay = new RadioButton();
             oneWay.Text = "One-way";
@@ -215,10 +215,10 @@ namespace Lab3
             //new
             International = new RadioButton();
             International.Text = "International";
-            International.Checked = true;
             IntGrid.Controls.Add(International);
             Local = new RadioButton();
             Local.Text = "Local";
+            Local.Checked = true;
             IntGrid.Controls.Add(Local);
 
             //new

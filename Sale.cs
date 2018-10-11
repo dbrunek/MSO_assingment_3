@@ -108,8 +108,7 @@ namespace Lab3
                     IKEAMyntAtare2000 coin = new IKEAMyntAtare2000();
                     coin.starta();
                     coin.betala(Price);
-                    PaymentSuccesful = true;
-                    //coin.stoppa();
+                    PaymentSuccesful = coin.stoppa(true); //false
                     break;
             }
             PaymentSucces(PaymentSuccesful, Price);
